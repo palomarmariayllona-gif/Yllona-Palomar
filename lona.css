@@ -1,0 +1,283 @@
+:root {
+    
+    --lavender-blush: #FFE6ED;
+    --blush: #CF7486; 
+    --text-dark: #333; 
+    --shadow-color: rgba(207, 116, 134, 0.4); 
+    
+    
+    --header-font: 'Playfair Display', serif;
+    --body-font: 'Varela Round', sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--body-font);
+    background-color: var(--lavender-blush);
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column; 
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- Navigation --- */
+.top-nav {
+    display: flex;
+    justify-content: center;
+    background-color: transparent; 
+    padding: 20px 0 10px 0;
+    gap: 40px;
+}
+
+.nav-item {
+    cursor: pointer;
+    font-family: var(--header-font);
+    font-size: 1.3em;
+    color: var(--blush);
+    text-decoration: none;
+    padding: 8px 15px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background-color: var(--blush);
+    transition: width 0.3s ease;
+}
+
+.nav-item:hover, .nav-item.active {
+    color: var(--text-dark);
+}
+
+.nav-item.active::after {
+    width: 100%;
+}
+
+/* --- Main Content Layout --- */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    padding: 20px 40px 40px 40px;
+}
+
+.content-container {
+    width: 100%;
+    display: none; 
+    justify-content: center;
+    flex-wrap: wrap; 
+    gap: 40px; 
+    animation: fadeIn 0.6s ease-out;
+    max-width: 1200px; 
+    flex-direction: column; 
+    align-items: center;
+}
+
+.content-container.active {
+    display: flex;
+}
+
+.boxes-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+}
+
+/* --- Content Boxes --- */
+.content-box {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px var(--shadow-color);
+    max-width: 350px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease-out;
+}
+.content-box:hover {
+    transform: translateY(-5px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Typography & Headings --- */
+.content-box h1, .content-box h2, .content-container > h1 {
+    font-family: var(--header-font);
+    color: var(--blush);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.content-container > h1 { 
+    font-size: 3.5em;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+.content-box h1 { font-size: 3em; }
+.content-box h2 { font-size: 2em; }
+
+#box2 h1 {
+    font-size: 3.2em;
+    font-weight: 900; 
+    text-transform: uppercase;
+    margin-top: 50px;
+}
+
+.section-text {
+    font-size: 1em;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* --- Image Frames and Groups --- */
+.image-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding: 10px; 
+}
+
+/* Polaroid Style */
+.polaroid-image-frame {
+    background: #fff;
+    padding: 15px 15px 40px 15px; 
+    border: 1px solid var(--lavender-blush);
+    box-shadow: 0 5px 20px var(--shadow-color);
+    display: inline-block; 
+}
+.polaroid-image-frame img {
+    width: 150px;
+    height: 150px;
+    display: block;
+    object-fit: contain; 
+    box-shadow: none; 
+}
+
+#box1 .polaroid-image-frame:first-child {
+    transform: rotate(-5deg); 
+}
+#box1 .polaroid-image-frame:nth-child(2) {
+    transform: rotate(3deg) translateY(-20px) translateX(10px);
+}
+
+/* Circle Style */
+.circle-frame {
+    width: 180px; /* Default for box 3 */
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 6px solid var(--blush); 
+    box-shadow: 0 0 25px var(--shadow-color);
+}
+.circle-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    box-shadow: none;
+}
+
+/* Smaller circles for boxes 4, 5, 6, 7, 8, and 9 for better fit */
+#box4 .circle-frame,
+#box5 .circle-frame, 
+#box6 .circle-frame,
+#box7 .circle-frame,
+#box8 .circle-frame,
+#box9 .circle-frame {
+    width: 100px; /* Uniform smaller size */
+    height: 100px;
+    border-width: 3px; 
+}
+
+/* --- Lists --- */
+.organized-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 300px;
+    text-align: left;
+}
+.organized-list li {
+    font-size: 0.95em;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+.organized-list li strong {
+    color: var(--blush);
+    font-weight: 700;
+}
+.organized-list i {
+    margin-right: 10px;
+    color: var(--blush);
+    min-width: 20px;
+    text-align: center;
+}
+
+/* --- Media Queries (Responsiveness) --- */
+@media (max-width: 768px) {
+    .top-nav {
+        gap: 20px;
+        padding: 15px 0 5px 0;
+    }
+    .nav-item {
+        font-size: 1.1em;
+    }
+    .main-content {
+        padding: 20px 10px;
+    }
+    .content-container {
+        gap: 20px;
+    }
+    .boxes-wrapper {
+        gap: 20px;
+    }
+    .content-box {
+        max-width: 90%;
+    }
+    #box2 h1 {
+        font-size: 2.2em;
+    }
+    .content-container > h1 {
+        font-size: 2.5em;
+    }
+    .image-group {
+        gap: 10px;
+    }
+    /* Updated mobile sizes for all circle frames in About section */
+    #box3 .circle-frame {
+         width: 90px;
+         height: 90px;
+    }
+    #box4 .circle-frame,
+    #box5 .circle-frame, 
+    #box6 .circle-frame,
+    #box7 .circle-frame,
+    #box8 .circle-frame,
+    #box9 .circle-frame {
+        width: 80px; 
+        height: 80px;
+    }
+    .polaroid-image-frame img {
+        width: 120px;
+        height: 120px;
+    }
+}
